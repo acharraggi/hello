@@ -1,6 +1,6 @@
 import Expo from 'expo';
 import React, { Component } from 'react';
-import { StyleSheet, ListView, Text, View } from 'react-native';
+import {StyleSheet, ListView, Text, View, TouchableHighlight} from 'react-native';
 
 class App extends React.Component {
 
@@ -14,6 +14,11 @@ class App extends React.Component {
       ])
     };
   }
+
+  _onPressButton() {
+    console.log("You tapped the button!");
+  }
+
   render() {
     return (
         <View style={{flex: 1, paddingTop: 22}}>
@@ -21,6 +26,9 @@ class App extends React.Component {
                   dataSource={this.state.dataSource}
                   renderRow={(rowData) => <Text>{rowData}</Text>}
               />
+          <TouchableHighlight onPress={this._onPressButton}>
+            <Text>Button</Text>
+          </TouchableHighlight>
         </View>
     );
   }
