@@ -1,47 +1,29 @@
 import Expo from 'expo';
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Text, Image, View } from 'react-native';
+import { StyleSheet, ListView, Text, View } from 'react-native';
 
 class App extends React.Component {
 
-    render() {
-      return (
-          <ScrollView>
-            <Text style={{fontSize:96}}>Scroll me plz</Text>
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Text style={{fontSize:96}}>If you like</Text>
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Text style={{fontSize:96}}>Scrolling down</Text>
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Text style={{fontSize:96}}>What's the best</Text>
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Text style={{fontSize:96}}>Framework around?</Text>
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Image source={require('./assets/icons/app.png')} />
-            <Text style={{fontSize:80}}>React Native</Text>
-          </ScrollView>
-      );
-    }
+  // Initialize the hardcoded data
+  constructor(props) {
+    super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows([
+        'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
+      ])
+    };
+  }
+  render() {
+    return (
+        <View style={{flex: 1, paddingTop: 22}}>
+              <ListView
+                  dataSource={this.state.dataSource}
+                  renderRow={(rowData) => <Text>{rowData}</Text>}
+              />
+        </View>
+    );
+  }
 }
-
 
 Expo.registerRootComponent(App);
