@@ -1,6 +1,9 @@
+'use strict';
+
 import Expo from 'expo';
 import React, { Component } from 'react';
-import {StyleSheet, ListView, Text, View, TouchableHighlight} from 'react-native';
+import {ListView, Text, View, TouchableHighlight} from 'react-native';
+import {FadeInView} from './FadeInView';
 
 class App extends React.Component {
 
@@ -29,6 +32,10 @@ class App extends React.Component {
           <TouchableHighlight onPress={this._onPressButton}>
             <Text>Button</Text>
           </TouchableHighlight>
+          <Text>Hey there</Text>
+          <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue'}}>
+            <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Fading in</Text>
+          </FadeInView>
         </View>
     );
   }
