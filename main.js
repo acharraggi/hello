@@ -1,12 +1,25 @@
 'use strict';
 
 import Expo from 'expo';
-import React, { Component } from 'react';
-import {ListView, Text, View, TouchableHighlight} from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, ListView, Text, View} from 'react-native';
 import {FadeInView} from './FadeInView';
+import {Clock} from './Clock';
+import {MyButton} from './MyButton';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 22,
+  },
+  divider: {
+    height: 1,
+    padding: 5,
+    backgroundColor: 'whitesmoke',
+  },
+});
 
 class App extends React.Component {
-
   // Initialize the hardcoded data
   constructor(props) {
     super(props);
@@ -18,21 +31,24 @@ class App extends React.Component {
     };
   }
 
-  _onPressButton() {
-    console.log("You tapped the button!");
-  }
-
   render() {
     return (
-        <View style={{flex: 1, paddingTop: 22}}>
-              <ListView
-                  dataSource={this.state.dataSource}
-                  renderRow={(rowData) => <Text>{rowData}</Text>}
-              />
-          <TouchableHighlight onPress={this._onPressButton}>
-            <Text>Button</Text>
-          </TouchableHighlight>
-          <Text>Hey there</Text>
+        <View style={styles.container}>
+          <ListView
+              dataSource={this.state.dataSource}
+              renderRow={(rowData) => <Text>{rowData}</Text>}
+          />
+
+          <View style={styles.divider} />
+          <Clock />
+
+          <View style={styles.divider} />
+          <MyButton />
+
+          <View style={styles.divider} />
+          <Text>Hey there. Just some plain old text.</Text>
+
+          <View style={styles.divider} />
           <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue'}}>
             <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Fading in</Text>
           </FadeInView>
